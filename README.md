@@ -32,9 +32,9 @@ active and accessible to readers.
 The system defines four primary user roles.
 
 ### Author
-The Author is responsible for creating and editing documents and managing their versions.
+Responsible for creating and editing documents and managing their versions.
 
-Responsibilities:
+Capabilities:
 - Create new documents
 - Create new document versions
 - Edit document drafts
@@ -42,24 +42,24 @@ Responsibilities:
 - View document history
 
 ### Reviewer
-The Reviewer is responsible for evaluating document versions and deciding whether they should  
+Responsible for evaluating document versions and deciding whether they should  
 be approved or rejected.
 
-Responsibilities:
+Capabilities:
 - Review submitted document versions
 - Approve document versions
 - Reject document versions
 - Add comments during the review process
 
 ### Reader
-The Reader has read-only access to documents.
+Read-only access to documents role.
 
-Responsibilities:
+Capabilities:
 - View active (approved) document versions
 - Access published documents
 
 ### Administrator
-The Administrator manages the system configuration and user access.
+Manages the system configuration and user access.
 
 Responsibilities:
 - Manage users
@@ -70,9 +70,6 @@ Responsibilities:
 ---
 
 ## 🚀 Core Functionalities
-
-The system provides the following core functionalities.
-
 ### Document Management
 - Creation of new documents
 - Version Management
@@ -86,22 +83,24 @@ The system provides the following core functionalities.
 - Review process handled by reviewers
 - Approval or rejection of document versions
 - Only approved versions become active
-- Document History
-- View complete version history of a document
-- Display metadata such as author, creation date, and status
+
+### Document History
+- Full version history per document
 - Compare different document versions
+- Metadata visibility (author, date, status)
+- Version comparison capability
+
+### Security & Access Control
 - Role-based access control
+- Permission validation
 - Prevention of unauthorized operations
-- Permission validation for user actions
 
 ### Error Handling
-The system must properly handle errors such as:
+The system handles errors such as:
 
-- Invalid user actions
+- Invalid operations
 - Missing data
 - Unauthorized access attempts
-
-The application should provide clear error messages to users.
 
 ---
 
@@ -109,42 +108,23 @@ The application should provide clear error messages to users.
 🔹 Use Case Diagram  
 Describes interactions between users and the system.
 
-📎 File:
-```
-docs/diagrams/use_case_diagram.png
-```
+📎 [Use Case Diagram](docs/diagrams/use_case_diagram.drawio.png)
+
 
 🔹 ER Diagram  
 Represents the database structure, entities, and relationships.
 
-📎 File:
-```
-docs/diagrams/er_diagram.png
-```
+📎 [ER Diagram](docs/diagrams/er_diagram.drawio.png)
 
 🔹 Architecture Diagram  
 Shows the overall system structure and component interaction.
 
-📎 File:
-```
-docs/diagrams/architecture_diagram.png
-```
+📎 [Architecture Diagram](docs/diagrams/architecture_diagram.drawio.png)
 
 🔹 Lean Canvas   
-Provides a business-oriented overview of the system idea.
+Business-level overview of the project idea.
 
-📎 File:
-```
-docs/diagrams/lean_canvas.png
-```
-
----
-
-## ⚙️ Technologies
-- Backend: Java / Spring Boot
-- Database: MySQL
-- Frontend: (to be implemented)
-- Version Control: Git
+📎 [Lean Canvas](docs/diagrams/Lean_Canvas_Document_Version_System.drawio.png)
 
 ---
 
@@ -153,9 +133,75 @@ The system includes the following main entities:
 - Users
 - Documents
 - Versions
-- Comments
-- Approvals
-- Audit Logs
 
 Each document can have multiple versions, and each version goes  
 through a review process before approval.
+
+---
+
+## 🏗️ System Architecture
+The project follows a modular N-tier architecture:
+- dms-server: The backend core containing the REST API, business logic, and  
+database persistence.
+- dms-client: The client-side implementation for interacting with the system.
+- dms-common: Shared DTOs and utilities used by both client and server.
+
+---
+
+### 📁 Server Module Structure (dms-server)
+The backend follows a standard N-tier architecture:
+- config: Security configurations and DataSeeder for initial database population.
+- controller: REST endpoints for Documents, Users, and System Health.
+- dto: Request and Response objects (Data Transfer Objects)
+- exception: Centralized error handling.
+- model: Domain entities including Document, Version, User, and Role.
+- repository: Data access layer using Spring Data JPA.
+- service: Implementation of the core business logic.
+- security: Authentication & authorization
+
+---
+
+## ⚙️ Technologies
+- Backend: Java / Spring Boot
+- Database: MySQL
+- Frontend: Spring
+- Version Control: Git
+- Containerization: Docker & Docker Compose
+
+---
+
+## 🛠️ Installation & Setup
+1. Clone the repository:
+```
+git clone https://github.com/IvanTsekov12/Proekt-SAP.git
+cd Proekt-SAP
+```
+
+2. Configuration:  
+Create a MySQL database  
+The project uses Docker to run MySQL in a container.  
+```
+docker-compose up -d
+```
+Navigate to **dms-server/src/main/resources/application.yml** to configure your database connection and server port.  
+
+To stop the database:
+```
+docker-compose down
+```
+
+
+3. Build the project:
+```
+mvn clean install
+```
+
+4. Run the application:
+```
+mvn spring-boot:run
+```
+
+5. After starting the application, open:
+```
+http://localhost:8080
+```
