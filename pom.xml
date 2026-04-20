@@ -16,7 +16,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>dms-common</module>
         <module>dms-server</module>
     </modules>
 
