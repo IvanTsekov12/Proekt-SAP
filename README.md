@@ -37,7 +37,6 @@ Responsible for creating and editing documents and managing their versions.
 Capabilities:
 - Create new documents
 - Create new document versions
-- Edit document drafts
 - Submit document versions for review
 - View document history
 
@@ -139,15 +138,6 @@ through a review process before approval.
 
 ---
 
-## 🏗️ System Architecture
-The project follows a modular N-tier architecture:
-- dms-server: The backend core containing the REST API, business logic, and  
-database persistence.
-- dms-client: The client-side implementation for interacting with the system.
-- dms-common: Shared DTOs and utilities used by both client and server.
-
----
-
 ### 📁 Server Module Structure (dms-server)
 The backend follows a standard N-tier architecture:
 - config: Security configurations and DataSeeder for initial database population.
@@ -164,7 +154,7 @@ The backend follows a standard N-tier architecture:
 ## ⚙️ Technologies
 - Backend: Java / Spring Boot
 - Database: MySQL
-- Frontend: Spring
+- Frontend: HTML, CSS, JavaScript
 - Version Control: Git
 - Containerization: Docker & Docker Compose
 
@@ -198,7 +188,7 @@ mvn clean install
 
 4. Run the application:
 ```
-mvn spring-boot:run
+./mvnw spring-boot:run
 ```
 
 5. After starting the application, open:
