@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="add_user_title">DMS - Нов потребител</title>
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/add-user.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="modal-page">
+    <div class="modal active">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-user-plus"></i> <span data-i18n="add_user_heading">Нов потребител</span></h2>
+            </div>
+            <form action="index.html">
+                <div class="form-group">
+                    <label for="new-username" data-i18n="add_user_username">Потребителско име</label>
+                    <input type="text" id="new-username" data-i18n-placeholder="add_user_username_placeholder" placeholder="Въведете потребителско име..." required>
+                </div>
+                <div class="form-group">
+                    <label for="new-password" data-i18n="add_user_password">Парола</label>
+                    <input type="password" id="new-password" data-i18n-placeholder="add_user_password_placeholder" placeholder="Въведете парола..." required>
+                </div>
+                <div class="form-group">
+                    <label for="new-role" data-i18n="add_user_role">Роля</label>
+                    <select id="new-role" class="filter-select full-width" required>
+                        <option value="READER" data-i18n="add_user_role_reader">Reader - Само четене</option>
+                        <option value="AUTHOR" data-i18n="add_user_role_author">Author - Създаване на документи</option>
+                        <option value="REVIEWER" data-i18n="add_user_role_reviewer">Reviewer - Одобрение на версии</option>
+                        <option value="ADMIN" data-i18n="add_user_role_admin">Admin - Пълен достъп</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <a href="index.html" class="btn-secondary" data-i18n="add_user_cancel">Отказ</a>
+                    <button type="submit" class="btn-primary"><i class="fas fa-check"></i> <span data-i18n="add_user_submit">Създай</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="toast-container" class="toast-container"></div>
+    <script src="./js/shared/api.js"></script>
+    <script src="./js/shared/common.js"></script>
+    <script src="./js/add-user.js"></script>
+</body>
+</html>

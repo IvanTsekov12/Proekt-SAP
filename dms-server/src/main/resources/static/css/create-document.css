@@ -1,0 +1,33 @@
+body.modal-page {
+    min-height: 100vh;
+}
+
+#create-doc-form {
+    display: grid;
+    gap: 1.25rem;
+}
+
+#create-doc-form textarea {
+    width: 100%;
+    min-height: 180px;
+    resize: vertical;
+    padding: 1rem 1.1rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-family: var(--font-primary);
+    font-size: 0.98rem;
+    line-height: 1.6;
+    transition: all var(--transition-fast);
+}
+
+#create-doc-form textarea:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+#create-doc-form textarea::placeholder {
+    color: var(--text-muted);
+}

@@ -76,7 +76,7 @@ public class DocumentController {
         return mapToVersionResponse(version);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('AUTHOR') or hasRole('ADMIN')")
     @PostMapping("/{documentId}/versions/{versionId}/activate")
     public VersionResponse activateVersion(@PathVariable UUID documentId, @PathVariable UUID versionId) {
         Version version = documentService.activateVersion(documentId, versionId);
@@ -122,7 +122,7 @@ public class DocumentController {
     }
 
     @DeleteMapping("/{documentId}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('AUTHOR') or hasRole('ADMIN')")
     public void deleteDocument(@PathVariable UUID documentId) {
         documentService.deleteDocument(documentId);
     }

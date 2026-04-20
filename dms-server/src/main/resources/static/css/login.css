@@ -1,0 +1,20 @@
+body {
+    overflow: hidden;
+}
+
+.login-footer {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.create-account-link {
+    justify-self: center;
+    color: var(--accent-secondary);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.create-account-link:hover {
+    color: var(--text-primary);
+}

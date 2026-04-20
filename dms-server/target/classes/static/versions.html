@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="versions_title">DMS - Версии</title>
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/versions.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app-page" class="page active">
+        <aside id="sidebar-root" class="sidebar"></aside>
+
+        <main class="main-content">
+            <div class="view active">
+                <header class="view-header">
+                    <div class="header-left">
+                        <a href="documents.html" class="btn-back"><i class="fas fa-arrow-left"></i></a>
+                        <div>
+                            <h1 id="doc-title">Project Charter</h1>
+                            <p class="subtitle" data-i18n="versions_subtitle">Версии на документа</p>
+                        </div>
+                    </div>
+                    <div class="header-actions">
+                        <a href="compare.html" class="btn-secondary"><i class="fas fa-code-compare"></i><span data-i18n="compare_button">Сравни</span></a>
+                        <a href="create-version.html" class="btn-primary"><span data-i18n="new_version">Нова версия</span></a>
+                    </div>
+                </header>
+
+                <div class="content-area">
+                    <div id="versions-list" class="versions-list">
+                        <article class="version-card">
+                            <div class="version-card-top">
+                                <div><h3>Версия 4</h3><p class="subtitle">Създадена от Maria Petrova</p></div>
+                                <span class="status-badge approved">Approved</span>
+                            </div>
+                            <p>Финализирано съдържание след всички ревюта и коментари.</p>
+                            <div class="version-card-actions">
+                                <a href="view-version.html" class="btn-secondary">Преглед</a>
+                                <a href="review-comment.html" class="btn-secondary">Коментар</a>
+                            </div>
+                        </article>
+                        <article class="version-card">
+                            <div class="version-card-top">
+                                <div><h3>Версия 3</h3><p class="subtitle">Създадена от Ivan Kolev</p></div>
+                                <span class="status-badge review">In Review</span>
+                            </div>
+                            <p>Добавена е секция за обхват и зависимости.</p>
+                            <div class="version-card-actions">
+                                <a href="view-version.html" class="btn-secondary">Преглед</a>
+                                <a href="review-comment.html" class="btn-secondary">Коментар</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <div id="toast-container" class="toast-container"></div>
+    <script src="./js/shared/api.js"></script>
+    <script src="./js/shared/common.js"></script>
+    <script src="./js/versions.js"></script>
+</body>
+</html>

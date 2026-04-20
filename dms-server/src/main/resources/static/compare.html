@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="compare_page_title">DMS - Сравнение</title>
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/compare.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app-page" class="page active">
+        <aside id="sidebar-root" class="sidebar"></aside>
+
+        <main class="main-content">
+            <div class="view active">
+                <header class="view-header">
+                    <div class="header-left">
+                        <a href="versions.html" class="btn-back"><i class="fas fa-arrow-left"></i></a>
+                        <div>
+                            <h1><i class="fas fa-code-compare"></i> <span data-i18n="compare_heading">Сравнение на версии</span></h1>
+                            <p id="compare-doc-title" class="subtitle" data-i18n="compare_doc_subtitle">Изберете документ</p>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="content-area">
+                    <div class="compare-selector">
+                        <div class="compare-select-group">
+                            <label data-i18n="compare_version_1">Версия 1:</label>
+                            <select id="compare-version-1" class="filter-select">
+                                <option value="" data-i18n="compare_select_version">Изберете версия</option>
+                            </select>
+                        </div>
+                        <div class="compare-arrow"><i class="fas fa-arrows-left-right"></i></div>
+                        <div class="compare-select-group">
+                            <label data-i18n="compare_version_2">Версия 2:</label>
+                            <select id="compare-version-2" class="filter-select">
+                                <option value="" data-i18n="compare_select_version">Изберете версия</option>
+                            </select>
+                        </div>
+                        <button id="run-compare-btn" type="button" class="btn-primary">
+                            <i class="fas fa-search"></i><span data-i18n="compare_run">Сравни</span>
+                        </button>
+                    </div>
+
+                    <div id="compare-result" class="compare-result">
+                        <div class="empty-state">
+                            <i class="fas fa-code-compare"></i>
+                            <h3 data-i18n="compare_empty_title">Няма избрано сравнение</h3>
+                            <p data-i18n="compare_empty_message">Изберете две версии и натиснете "Сравни"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <div id="toast-container" class="toast-container"></div>
+    <script src="./js/shared/api.js"></script>
+    <script src="./js/shared/common.js"></script>
+    <script src="./js/compare.js"></script>
+</body>
+</html>

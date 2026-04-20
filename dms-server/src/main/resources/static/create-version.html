@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="create_version_title">DMS - Нова версия</title>
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/create-version.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="modal-page">
+    <div class="modal active">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-code-branch"></i> <span data-i18n="create_version_heading">Нова версия</span></h2>
+                <a href="versions.html" class="modal-close">&times;</a>
+            </div>
+            <form action="versions.html">
+                <div class="form-group">
+                    <label for="version-content-input" data-i18n="create_version_label_content">Съдържание на версията</label>
+                    <textarea id="version-content-input" rows="6" data-i18n-placeholder="create_version_placeholder_content" placeholder="Въведете съдържание..." required></textarea>
+                    <small class="form-hint" data-i18n="create_version_hint">Заредено е текущото съдържание на документа, което можете да редактирате.</small>
+                </div>
+                <div class="modal-actions">
+                    <a href="versions.html" class="btn-secondary" data-i18n="create_version_cancel">Отказ</a>
+                    <button type="submit" class="btn-primary"><i class="fas fa-check"></i> <span data-i18n="create_version_submit">Създай версия</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="toast-container" class="toast-container"></div>
+    <script src="./js/shared/api.js"></script>
+    <script src="./js/shared/common.js"></script>
+    <script src="./js/create-version.js"></script>
+</body>
+</html>

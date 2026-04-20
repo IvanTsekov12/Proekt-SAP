@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="dashboard_title">DMS - Табло</title>
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app-page" class="page active">
+        <aside id="sidebar-root" class="sidebar"></aside>
+
+        <main class="main-content">
+            <div class="view active">
+                <header class="view-header">
+                    <div class="header-left">
+                        <div>
+                            <h1><i class="fas fa-chart-pie"></i> <span data-i18n="dashboard_heading">Табло</span></h1>
+                            <p class="subtitle" data-i18n="dashboard_subtitle">Преглед на статистики</p>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="content-area">
+                    <div class="stats-grid">
+                        <div class="stat-card"><div class="stat-icon blue"><i class="fas fa-file-alt"></i></div><div class="stat-info"><span id="stat-total-docs" class="stat-value">24</span><span class="stat-label" data-i18n="stat_total_docs">Общо документи</span></div></div>
+                        <div class="stat-card"><div class="stat-icon purple"><i class="fas fa-code-branch"></i></div><div class="stat-info"><span id="stat-total-versions" class="stat-value">68</span><span class="stat-label" data-i18n="stat_total_versions">Общо версии</span></div></div>
+                        <div class="stat-card"><div class="stat-icon orange"><i class="fas fa-clock"></i></div><div class="stat-info"><span id="stat-pending-review" class="stat-value">9</span><span class="stat-label" data-i18n="stat_pending_review">Чакат преглед</span></div></div>
+                        <div class="stat-card"><div class="stat-icon green"><i class="fas fa-check-circle"></i></div><div class="stat-info"><span id="stat-approved" class="stat-value">43</span><span class="stat-label" data-i18n="stat_approved">Одобрени</span></div></div>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <div class="dashboard-column">
+                            <div class="chart-card">
+                                <h3><i class="fas fa-chart-bar"></i> <span data-i18n="chart_versions_by_status">Версии по статус</span></h3>
+                                <div class="chart-container">
+                                    <div id="status-chart" class="bar-chart static-chart">
+                                        <div class="chart-bar"><span>Draft</span><div class="bar-fill draft" style="width: 36%;"></div></div>
+                                        <div class="chart-bar"><span>Review</span><div class="bar-fill review" style="width: 58%;"></div></div>
+                                        <div class="chart-bar"><span>Approved</span><div class="bar-fill approved" style="width: 82%;"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chart-card">
+                                <h3><i class="fas fa-folder"></i> <span data-i18n="recent_documents">Последни документи</span></h3>
+                                <div id="recent-docs" class="recent-list">
+                                    <div class="recent-item"><strong>Project Charter</strong><span>Обновен преди 2 часа</span></div>
+                                    <div class="recent-item"><strong>Release Notes</strong><span>Обновен вчера</span></div>
+                                    <div class="recent-item"><strong>HR Policy</strong><span>Обновен преди 3 дни</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-column">
+                            <div class="chart-card pending-card">
+                                <h3><i class="fas fa-hourglass-half"></i> <span data-i18n="pending_approval">Чакащи одобрение</span></h3>
+                                <div id="pending-versions" class="pending-list">
+                                    <div class="pending-item"><strong>Security Checklist v2</strong><span>Очаква reviewer</span></div>
+                                    <div class="pending-item"><strong>Budget Draft v4</strong><span>Очаква admin</span></div>
+                                </div>
+                            </div>
+                            <div class="chart-card">
+                                <h3><i class="fas fa-history"></i> <span data-i18n="recent_activity">Последна активност</span></h3>
+                                <div id="recent-activity" class="activity-list">
+                                    <div class="activity-item"><i class="fas fa-plus-circle"></i><span>Създаден е нов документ</span></div>
+                                    <div class="activity-item"><i class="fas fa-code-branch"></i><span>Добавена е нова версия</span></div>
+                                    <div class="activity-item"><i class="fas fa-check-circle"></i><span>Версия е одобрена</span></div>
+                                </div>
+                            </div>
+                            <div class="chart-card quick-actions-card">
+                                <h3><i class="fas fa-bolt"></i> <span data-i18n="quick_actions">Бързи действия</span></h3>
+                                <div class="quick-actions">
+                                    <a class="quick-action-btn" href="create-document.html"><i class="fas fa-plus"></i><span data-i18n="quick_new_document">Нов документ</span></a>
+                                    <a class="quick-action-btn" href="documents.html"><i class="fas fa-folder-open"></i><span data-i18n="quick_view_documents">Виж документи</span></a>
+                                    <a class="quick-action-btn" href="users.html"><i class="fas fa-users"></i><span data-i18n="quick_users">Потребители</span></a>
+                                    <a class="quick-action-btn" href="audit.html"><i class="fas fa-list"></i><span data-i18n="quick_full_history">Пълна история</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="./js/shared/api.js"></script>
+    <script src="./js/shared/common.js"></script>
+    <script src="./js/dashboard.js"></script>
+</body>
+</html>

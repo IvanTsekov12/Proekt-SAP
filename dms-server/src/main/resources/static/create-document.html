@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="create_document_title">DMS - Нов документ</title>
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/create-document.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="modal-page">
+    <div class="modal active">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-file-medical"></i> <span data-i18n="create_document_heading">Нов документ</span></h2>
+                <a href="documents.html" class="modal-close">&times;</a>
+            </div>
+            <form id="create-doc-form" action="documents.html">
+                <div class="form-group">
+                    <label for="doc-title-input" data-i18n="create_document_label_title">Заглавие на документа</label>
+                    <input type="text" id="doc-title-input" data-i18n-placeholder="create_document_placeholder_title" placeholder="Въведете заглавие..." required>
+                </div>
+                <div class="form-group">
+                    <label for="doc-content-input" data-i18n="create_document_label_content">Съдържание на документа</label>
+                    <textarea id="doc-content-input" data-i18n-placeholder="create_document_placeholder_content" placeholder="Добавете начално съдържание на документа..." required></textarea>
+                </div>
+                <div class="modal-actions">
+                    <a href="documents.html" class="btn-secondary" data-i18n="create_document_cancel">Отказ</a>
+                    <button type="submit" class="btn-primary" data-i18n="create_document_submit">Създай</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="toast-container" class="toast-container"></div>
+    <script src="./js/shared/api.js"></script>
+    <script src="./js/shared/common.js"></script>
+    <script src="./js/create-document.js"></script>
+</body>
+</html>

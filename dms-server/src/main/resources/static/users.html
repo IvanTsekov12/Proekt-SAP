@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="users_title">DMS - Потребители</title>
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/users.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app-page" class="page active">
+        <aside id="sidebar-root" class="sidebar"></aside>
+
+        <main class="main-content">
+            <div class="view active">
+                <header class="view-header">
+                    <div class="header-left">
+                        <div>
+                            <h1><i class="fas fa-users"></i> <span data-i18n="users_heading">Потребители</span></h1>
+                            <p class="subtitle" data-i18n="users_subtitle">Управление на потребители</p>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="content-area">
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr><th data-i18n="users_col_user">Потребител</th><th data-i18n="users_col_role">Роля</th><th data-i18n="users_col_status">Статус</th><th data-i18n="users_col_actions">Действия</th></tr>
+                            </thead>
+                            <tbody id="users-table-body">
+                                <tr><td>admin</td><td>Admin</td><td>Активен</td><td><a href="add-user.html">Редакция</a></td></tr>
+                                <tr><td>reviewer</td><td>Reviewer</td><td>Активен</td><td><a href="add-user.html">Редакция</a></td></tr>
+                                <tr><td>author</td><td>Author</td><td>Активен</td><td><a href="add-user.html">Редакция</a></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <div id="toast-container" class="toast-container"></div>
+    <script src="./js/shared/api.js"></script>
+    <script src="./js/shared/common.js"></script>
+    <script src="./js/users.js"></script>
+</body>
+</html>
