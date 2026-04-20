@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMS - Преглед на версия</title>
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/view-version.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="modal-page">
+    <div class="modal active">
+        <div class="modal-overlay"></div>
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2><i class="fas fa-eye"></i> Преглед на версия</h2>
+                <a href="versions.html" class="modal-close">&times;</a>
+            </div>
+            <div class="modal-body">
+                <div class="version-metadata">
+                    <div class="metadata-row"><span class="metadata-label"><i class="fas fa-code-branch"></i> Версия:</span><span id="view-version-number" class="metadata-value">-</span></div>
+                    <div class="metadata-row"><span class="metadata-label"><i class="fas fa-info-circle"></i> Статус:</span><span id="view-version-status" class="metadata-value">-</span></div>
+                    <div class="metadata-row"><span class="metadata-label"><i class="fas fa-user"></i> Автор:</span><span id="view-version-author" class="metadata-value">-</span></div>
+                    <div class="metadata-row"><span class="metadata-label"><i class="fas fa-calendar"></i> Създадена:</span><span id="view-version-date" class="metadata-value">-</span></div>
+                </div>
+                <div class="version-content-container">
+                    <div class="content-header"><label><i class="fas fa-file-alt"></i> Съдържание:</label></div>
+                    <pre id="view-version-content" class="version-content-preview">Зареждане...</pre>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <a href="versions.html" class="btn-secondary">Затвори</a>
+            </div>
+        </div>
+    </div>
+    <div id="toast-container" class="toast-container"></div>
+    <script src="./js/shared/api.js"></script>
+    <script src="./js/shared/common.js"></script>
+    <script src="./js/versions.js"></script>
+    <script src="./js/view-version.js"></script>
+</body>
+</html>

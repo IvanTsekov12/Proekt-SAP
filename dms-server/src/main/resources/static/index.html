@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="login_title">DMS - Вход</title>
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="language-toggle-root"></div>
+    <div id="login-page" class="page active">
+        <div class="login-container">
+            <div class="login-header">
+                <div class="logo-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <h1>DMS</h1>
+                <p class="tagline">Document Management System</p>
+            </div>
+
+            <form class="login-form" action="dashboard.html">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" data-i18n-placeholder="login_username_placeholder" placeholder="Потребителско име" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" data-i18n-placeholder="login_password_placeholder" placeholder="Парола" required>
+                </div>
+                <button type="submit" class="btn-primary">
+                    <span data-i18n="login_button">Вход</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+
+            <div class="login-footer">
+                <p data-i18n="login_demo">Демо акаунти: author / reviewer / admin</p>
+                <a href="add-user.html" class="create-account-link" data-i18n="login_create_account">Създай акаунт</a>
+            </div>
+        </div>
+
+        <div class="background-effects">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+        </div>
+    </div>
+    <script src="./js/shared/api.js"></script>
+    <script src="./js/shared/common.js"></script>
+    <script src="./js/login.js"></script>
+</body>
+</html>

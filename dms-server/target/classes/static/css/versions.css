@@ -1,0 +1,40 @@
+.versions-list {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.version-card {
+    display: grid;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+}
+
+.version-card-top,
+.version-card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.status-badge {
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.status-badge.approved {
+    background: rgba(34, 197, 94, 0.15);
+    color: var(--success);
+}
+
+.status-badge.review {
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--warning);
+}

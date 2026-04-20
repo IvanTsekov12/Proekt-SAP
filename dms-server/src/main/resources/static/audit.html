@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="audit_title">DMS - История</title>
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/audit.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app-page" class="page active">
+        <aside id="sidebar-root" class="sidebar"></aside>
+
+        <main class="main-content">
+            <div class="view active">
+                <header class="view-header">
+                    <div class="header-left">
+                        <div>
+                            <h1><i class="fas fa-history"></i> <span data-i18n="audit_heading">История на действията</span></h1>
+                            <p class="subtitle" data-i18n="audit_subtitle">Преглед на всички действия в системата</p>
+                        </div>
+                    </div>
+                    <div class="header-actions">
+                        <div class="filter-group">
+                            <select id="audit-filter" class="filter-select">
+                                <option value="all" data-i18n="filter_all">Всички действия</option>
+                                <option value="create" data-i18n="filter_create">Създаване</option>
+                                <option value="update" data-i18n="filter_update">Промяна</option>
+                                <option value="delete" data-i18n="filter_delete">Изтриване</option>
+                                <option value="approve" data-i18n="filter_approve">Одобрение</option>
+                            </select>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="content-area">
+                    <div id="audit-timeline" class="audit-timeline">
+                        <div class="timeline-item"><strong>14:30</strong><span> Maria Petrova одобри Version 4 на Project Charter</span></div>
+                        <div class="timeline-item"><strong>13:10</strong><span> Ivan Kolev създаде нова версия на Budget Draft</span></div>
+                        <div class="timeline-item"><strong>09:05</strong><span> Admin добави нов потребител reviewer</span></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <div id="toast-container" class="toast-container"></div>
+    <script src="./js/shared/api.js"></script>
+    <script src="./js/shared/common.js"></script>
+    <script src="./js/audit.js"></script>
+</body>
+</html>

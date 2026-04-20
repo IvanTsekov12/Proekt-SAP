@@ -1,0 +1,4 @@
+.data-table a {
+    color: var(--accent-secondary);
+    text-decoration: none;
+}

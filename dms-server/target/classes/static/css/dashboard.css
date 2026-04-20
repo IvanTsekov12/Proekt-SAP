@@ -1,0 +1,54 @@
+.chart-card {
+    padding: 1.85rem;
+    min-height: 320px;
+}
+
+.chart-card.quick-actions-card {
+    min-height: 0;
+}
+
+.chart-container {
+    min-height: 240px;
+}
+
+.static-chart {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.25rem;
+    padding: 1.5rem 0 0.5rem;
+}
+
+.static-chart .bar-item {
+    min-width: 0;
+}
+
+.static-chart .bar {
+    width: 100%;
+    max-width: 72px;
+}
+
+.recent-list,
+.pending-list,
+.activity-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.recent-item,
+.pending-item,
+.activity-item {
+    padding: 1.1rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+}
+
+.recent-item strong,
+.pending-item strong {
+    display: block;
+}
+
+.quick-action-btn {
+    text-decoration: none;
+}

@@ -4,6 +4,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.dmsserver.exception.BadRequestException;
 import com.example.dmsserver.exception.NotFoundException;
 import com.example.dmsserver.model.Document;
+import com.example.dmsserver.model.Role;
 import com.example.dmsserver.model.User;
 import com.example.dmsserver.model.Version;
 import com.example.dmsserver.model.VersionStatus;
@@ -33,12 +34,7 @@ public class DocumentService {
     }
 
     public Document createDocument(String title) {
-
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String username = auth.getName();
-
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new NotFoundException("User not found"));
+        User user = getCurrentUser();
 
         Document document = new Document(title, user);
 
@@ -46,25 +42,28 @@ public class DocumentService {
     }
 
     public List<Document> getAllDocuments() {
+        User user = getCurrentUser();
+        if (user.getRole() == Role.AUTHOR) {
+            return documentRepository.findByAuthorUsername(user.getUsername());
+        }
         return documentRepository.findAll();
     }
 
     public Document getDocumentOrThrow(UUID id) {
-        return documentRepository.findById(id)
+        Document document = documentRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Document not found"));
+        validateDocumentAccess(document);
+        return document;
     }
 
     @Transactional
     public Version createVersion(UUID documentId, String content) {
+        Document document = getDocumentOrThrow(documentId);
+        User user = getCurrentUser();
 
-        Document document = documentRepository.findById(documentId)
-                .orElseThrow(() -> new NotFoundException("Document not found"));
-
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String username = auth.getName();
-
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new NotFoundException("User not found"));
+        if (document.getVersions().size() == 1 && document.getVersions().get(0).getStatus() == VersionStatus.REJECTED) {
+            throw new BadRequestException("Cannot create a new version for a document whose first version was rejected");
+        }
 
         int nextVersionNumber = document.getVersions().stream()
                 .mapToInt(Version::getVersionNumber)
@@ -76,6 +75,17 @@ public class DocumentService {
         version.setDocument(document);
         version.setCreatedBy(user);
 
+        if (user.getRole() == Role.ADMIN) {
+            document.getVersions().forEach(existingVersion -> {
+                if (existingVersion.getStatus() == VersionStatus.ACTIVE) {
+                    existingVersion.setStatus(VersionStatus.APPROVED);
+                }
+            });
+            version.setStatus(VersionStatus.ACTIVE);
+        } else if (user.getRole() == Role.AUTHOR) {
+            version.setStatus(VersionStatus.IN_REVIEW);
+        }
+
         document.getVersions().add(version);
 
         documentRepository.save(document);
@@ -85,9 +95,7 @@ public class DocumentService {
 
     @Transactional(readOnly = true)
     public List<Version> getVersions(UUID documentId) {
-        Document document = documentRepository.findById(documentId)
-                .orElseThrow(() -> new RuntimeException("Document not found"));
-
+        Document document = getDocumentOrThrow(documentId);
         return document.getVersions();
     }
 
@@ -136,9 +144,7 @@ public class DocumentService {
     }
 
     public Version activateVersion(UUID documentId, UUID versionId) {
-
-        Document document = documentRepository.findById(documentId)
-                .orElseThrow(() -> new NotFoundException("Document not found"));
+        Document document = getDocumentOrThrow(documentId);
 
         Version versionToActivate = document.getVersions().stream()
                 .filter(v -> v.getId().equals(versionId))
@@ -162,8 +168,7 @@ public class DocumentService {
     }
 
     public Version getActiveVersion(UUID documentId) {
-        Document document = documentRepository.findById(documentId)
-                .orElseThrow(() -> new NotFoundException("Document not found"));
+        Document document = getDocumentOrThrow(documentId);
 
         return document.getVersions().stream()
                 .filter(v -> v.getStatus() == VersionStatus.ACTIVE)
@@ -185,8 +190,22 @@ public class DocumentService {
     }
 
     public void deleteDocument(UUID documentId) {
-        Document document = documentRepository.findById(documentId)
-                .orElseThrow(() -> new NotFoundException("Document not found"));
+        Document document = getDocumentOrThrow(documentId);
         documentRepository.delete(document);
+    }
+
+    private User getCurrentUser() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new NotFoundException("User not found"));
+    }
+
+    private void validateDocumentAccess(Document document) {
+        User user = getCurrentUser();
+        if (user.getRole() == Role.AUTHOR && !document.getAuthor().getId().equals(user.getId())) {
+            throw new NotFoundException("Document not found");
+        }
     }
 }

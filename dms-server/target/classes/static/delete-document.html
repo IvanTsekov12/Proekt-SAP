@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMS - Изтриване</title>
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/delete-document.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="modal-page">
+    <div class="modal active">
+        <div class="modal-overlay"></div>
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h2><i class="fas fa-trash-alt"></i> Изтриване</h2>
+                <a href="documents.html" class="modal-close">&times;</a>
+            </div>
+            <div class="modal-body">
+                <p>Сигурни ли сте, че искате да изтриете документ <strong id="delete-doc-name">Project Charter</strong>?</p>
+                <p class="warning-text"><i class="fas fa-exclamation-triangle"></i> Това действие е необратимо!</p>
+            </div>
+            <div class="modal-actions">
+                <a href="documents.html" class="btn-secondary">Отказ</a>
+                <button id="confirm-delete-btn" type="button" class="btn-danger"><i class="fas fa-trash"></i> Изтрий</button>
+            </div>
+        </div>
+    </div>
+    <div id="toast-container" class="toast-container"></div>
+    <script src="./js/shared/api.js"></script>
+    <script src="./js/shared/common.js"></script>
+    <script src="./js/delete-document.js"></script>
+</body>
+</html>
