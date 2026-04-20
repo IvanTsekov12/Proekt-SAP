@@ -58,7 +58,7 @@ Capabilities:
 - Access published documents
 
 ### Administrator
-Manages the system configuration and user access.
+Full system access. Manages the system configuration and user access.
 
 Responsibilities:
 - Manage users
@@ -195,3 +195,12 @@ mvn clean install
 ```
 http://localhost:8080
 ```
+
+## 📚 Additional Documentation
+
+Detailed documentation can be found in the `/docs` folder:
+    
+- [System Architecture](docs/architecture.md)
+- [Database Design details](docs/database.md)
+- [API Overview](docs/api.md)
+- [System workflow](docs/workflow.md)
