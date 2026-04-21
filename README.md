@@ -151,6 +151,22 @@ The backend follows a standard N-tier architecture:
 
 ---
 
+## 🧪 Testing
+The project includes automated unit tests to ensure that the document logic   
+and security work correctly.
+
+What is tested:
+- Business Logic (DocumentServiceTest): Tests for creating documents,   
+automatic version numbering, and transitions between statuses 
+- Security (CustomUserDetailsServiceTest): Verifies that users are correctly  
+identified by the system and that their roles are properly assigned.
+
+**How to run the tests:**  
+Open your terminal in the project folder and run:
+```
+./mvnw -pl dms-server test
+```
+
 ## ⚙️ Technologies
 - Backend: Java / Spring Boot
 - Database: MySQL
